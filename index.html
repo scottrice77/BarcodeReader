@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Barcode Reader Template</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<script src="src/barcodes.js" type="module"></script>-->
+        <script src="src/barcodes.js" type="text/javascript"></script>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="camera" style="height:75vh;width:96vw;"></div>
+        <div id="buttons" style="text-align: center;"></div>
+        <div id="result" style=""></div>
+        <script>
+            
+            BCReader.setup(
+                {
+                    container:'camera',
+                    buttons:'buttons',
+                    fit:true,
+    //                buttonstyle:'button',
+    //                buttononstyle:'buttonOn'
+                }
+            );
+            //container - required div to put the video track - {Required}
+            //buttons - default container for required buttons - {Required if any buttons}
+            //
+            //fit - if true resizes the video to fit the container
+            //formats - array of supported barcode formats. Defaults to 'code_128' & 'code_39' if missing
+            //alwayson - turns scan recognition on regardless of button press. Ie quick continual scanning setting. Defaults to true if no scan button           
+            //scanbutton - optional turns off a scan buttons
+            //scancontainer - optional alternate container for the scan buton
+            //torchbutton - optionally turns of the torch buttons
+            //torchcontainer - optional alternate container for the torch buton
+            //zoombutton - optionally turns off the zoom buttons
+            //zoomcontainer - optional alternate container for the zoom buttons
+            //buttonstyle - specify the style class of any generated buttons [has default settings]
+            //buttononstyle - specify the alternate class for the scan button (ie when turned on) [has default settings]
+            //
+            //width - specify video height
+            //height - specify video width
+            BCReader.setHandler(function(result){
+                let div=document.querySelector("#result");
+                div.innerHTML+="<br>"+result;
+            });
+        </script>
+        
+    </body>
+</html>
