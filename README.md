@@ -45,14 +45,38 @@ These settings supply container IDs for the video and buttons and instruct the v
 
 The full list of options is as follows
 
-Property | Status | Description
----------|--------|------------
-container|required|The ID of the HTML element in which the camera video should be embedded. If omitted the camera is still initialised but not embedded within the document.
-buttons|optional|The ID of the HTML element in which the controls should be embedded. If omitted the buttons aren't created and the device will scan continuously for barcodes (with the buttons scan mode can be toggled).
-fit|optional|When supplied instructs the video to resize to the bounds of the container. Should only be used with fixed size elements.
-formats|optional|An optional variable (must be an array if supplied) that lists the barcode formats to recognize. This should be used when you know the format of barcode(s) you will be scanning as limited supported options can improve performance and potentially reduce or eliminate false positive results.
+Property | Status | Type | Description
+---------|--------|------|------------
+container|required|string|The ID of the HTML element in which the camera video should be embedded. If omitted the camera is still initialised but not embedded within the document.
+buttons|optional|string|The ID of the HTML element in which the controls should be embedded. If omitted the buttons aren't created and the device will scan continuously for barcodes (with the buttons scan mode can be toggled).
+fit|optional|boolean|When supplied instructs the video to resize to the bounds of the container. Should only be used with fixed size elements.
+formats|optional|array|An optional variable that lists the barcode formats to recognize. This should be used when you know the format of barcode(s) you will be scanning as limited supported options can improve performance and potentially reduce or eliminate false positive results.
+alwayson|optional|boolean|Makes scanning mode continual, even with the presence of the Scan button.
+scanbutton|optional|boolean|Toggles the creation of the Scan Button (default on).
+scancontainer|optional|string|Specify an alternative container ID to embed the Scan button.
+torchbutton|optional|boolean|Toggles the creation of the Torch Button (default on).
+torchcontainer|optional|string|Specify an alternative container ID to embed the Torch button.
+zoombutton|optional|boolean|Toggles the creation of the Zoom Buttons (default on).
+zoomcontainer|optional|string|Specify an alternative container ID to embed the Zoom buttons.
+buttonstyle|otional|string|Specify the style class of any generated buttons (changes default settings).
+buttononstyle|otional|string|Specify the style class of any generated buttons (changes default settings) when turned on.
+width|optional|integer|Specify video width in pixels
+height|optional|integer|Specify video height in pixels
+
+### Step 2 - Managing Barcodes ###
+BCReader will manage the process of scanning for barcodes. All that needs to be configured is a handler function for when a barcode is succesfully recorded. See the example under the index.html heading.
+
+All other settings and methods are intended for internal use. You can, of course, modify them to suit.
 
 ## Using barcode.js as a module
+
+barcode.js can easily be converted to modular form if you prefer.
+
+The output is a single top level object so you add the line
+    `export {BCReader as default};`
+
+Then import the module in the usual way.
+
 
 # Barcode samples for testing
 
