@@ -12,7 +12,12 @@ As well as handling the initation of the Barcode Detector, the barcodes.js file 
 
 ## index.html
 
-A simple HTML page with three div elements. Two of these are supplied to barcodes.js during configuration as containers for the video camera feed and the control buttons. The final container is used by an embeded script to feedback the results of sucessfully scanned barcodes.
+A simple HTML page with three div elements. Two of these are supplied to barcodes.js during configuration as containers for the video camera feed and the control buttons. The final container is used by an embeded script to feedback the results of sucessfully scanned barcodes using the "setHandler" method and providing a function that accepts a single argument (the barcode scan result).
+
+    BCReader.setHandler(function(result){
+        let div=document.querySelector("#result");
+        div.innerHTML+="<br>"+result;
+    });
 
 ## style.css
 
