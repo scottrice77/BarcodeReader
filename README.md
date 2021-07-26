@@ -25,7 +25,32 @@ Contains only two style classes for buttons called in the initialisation procedu
 
 ## barcodes.js
 
+The barcodes.js file adds a single object to the global name space (BCReader). This object contains all the properties and methods required to configure and manage a barcode reader application.
 
+BCReader can be initialised with its setup function and providing an object with a number of (mostly) optional configuration options. As part of setup BCReader can create and embed a video element using your device camera as the source, add buttons to control your camera and device, configure the Barcode Reader API with the settings you specify or use predeterming defaults
+
+### Step 1 - Initialisation ###
+
+The initialisation call in the example index.html uses only a few basic properties. This is enough to create a working app.
+
+    BCReader.setup(
+        {
+            container:'camera',
+            buttons:'buttons',
+            fit:true,
+        }
+    );
+
+These settings supply container IDs for the video and buttons and instruct the video to resize to fit the container in which it is placed.
+
+The full list of options is as follows
+
+Property | Status | Description
+---------|--------|------------
+container|required|The ID of the HTML element in which the camera video should be embeded. If ommitted the camera is still initialised but not embeded within the document.
+buttons|optional|The ID of the HTML element in which the controls should be embeded. If ommitted the buttons aren't created and the device will scan continously for barcodes (with the buttons scan mode can be toggled).
+fit|optional|When supplied instructs the video to resize to the bounds of the container. Should only be used with fixed size elements.
+formats|optional|An optional variable (must be an array if supplied) that lists the barcode formats to recognize. This should be used when you know the format of barcode(s) you will be scanning as limited supported options can improve performance and potentially reduce or eliminate false positive results.
 
 ## Using barcode.js as a module
 
